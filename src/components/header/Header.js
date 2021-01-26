@@ -2,11 +2,16 @@ import PropTypes from 'prop-types';
 
 import Button from '../button/Button';
 
-const Header = ({ title }) => {
+const Header = ({ title, toggleForm, showForm }) => {
   return (
     <div className='header'>
       <h1 className='title'>{title}</h1>
-      <Button bgColor='green' txtColor='white' text='Add' />
+      <Button
+        bgColor={showForm ? '#990000' : 'green'}
+        txtColor='white'
+        text={showForm ? 'Close' : 'Add'}
+        onClick={toggleForm}
+      />
     </div>
   );
 };
@@ -16,7 +21,7 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 export default Header;

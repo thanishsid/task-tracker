@@ -28,6 +28,20 @@ function App() {
     },
   ]);
 
+  const [showForm, setShowForm] = useState(false);
+
+  //toggle add task form visibility
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+
+  //add task function
+  const addTask = (task) => {
+    const newId = Math.floor(Math.random() * 1000) + 1;
+    const newTask = { id: newId, ...task };
+    setTasks([...tasks, newTask]);
+  };
+
   //delete task function
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
@@ -45,8 +59,8 @@ function App() {
 
   return (
     <div className='container'>
-      <Header title='Task Tracker' />
-      <AddTask />
+      <Header showForm={showForm} toggleForm={toggleForm} />
+      {showForm && <AddTask addTask={addTask} />}
       {tasks.length ? (
         <Tasks
           taskList={tasks}
