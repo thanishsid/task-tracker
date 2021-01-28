@@ -125,3 +125,16 @@ footer {
 .noMsg {
   text-align: center;
 }
+
+.noSelect {
+  user-select: none;
+}
+
+.about {
+  text-align: center;
+}
+
+.abtHeader {
+  text-align: center;
+  width: 100%;
+}
